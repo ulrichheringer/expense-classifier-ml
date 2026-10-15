@@ -1,12 +1,12 @@
 # expense-classifier-ml
 
-Categoriza descrições de despesas em grupos como alimentação, transporte, contas e assinaturas com Naive Bayes.
+Sorts expense descriptions into categories such as food, transport, bills, and subscriptions with Naive Bayes.
 
-## Dados
+## Data
 
-O pipeline gera dados sintéticos determinísticos localmente, identificados como sintéticos em `pipeline.py`. Nenhum dado privado ou download externo é necessário. A divisão e a semente de avaliação são descritas junto às métricas abaixo.
+Deterministic synthetic data is generated locally in `pipeline.py`. No private data or external download is required.
 
-## Instalação e execução
+## Install and run
 
 ```bash
 python -m venv .venv
@@ -18,8 +18,10 @@ python cli.py train --model model.joblib
 python cli.py predict --model model.joblib
 ```
 
-## Métricas obtidas
+## Evaluation results
 
-Seed 42: holdout agrupado por descrição-base (templates de validação não aparecem no treino), 120 despesas em seis categorias — acurácia **0,4167**, F1 macro **0,3611**. Este baseline mostra generalização fraca entre templates; amplie e valide com descrições históricas rotuladas antes de uso real.
+With seed 42, a template-grouped holdout kept each base description out of training. On 120 expenses across six categories, accuracy was 0.4167 and macro F1 was 0.3611. This baseline generalizes poorly across description templates.
 
-Limitação: dados e regras de geração simplificados; antes de uso real, substitua-os por dados com licença e proveniência adequadas e valide fora da amostra.
+## Limitations
+
+The synthetic descriptions are limited and do not capture the variety of real transaction records. A practical model would need appropriately sourced, labeled descriptions and validation on a separate sample.
